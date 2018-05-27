@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="viewpager.css">
+</head>
+<body>
+    <div class="viewpager">
+        <img src="001.png" alt="1" class="active">
+        <img src="002.png" alt="2">
+        <img src="003.jpg" alt="3">
+        <ul class="nav">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <ul class="nextpage">
+            <li class="go"></li>
+            <li class="back"></li>
+        </ul>
+    </div>
+    <script>
+        var all_ul = document.getElementsByClassName("nav");
+        var all_li = all_ul[0].getElementsByTagName("li");
+        var div1 = document.getElementsByClassName("viewpager");
+        var all_img = div1[0].getElementsByTagName("img");
+        var the_index = 0;
+        for(var i=0;i<all_li.length;i++){
+            all_li[i].index = i;
+            all_li[i].onmouseover = function () {
+                the_index = this.index;
+                change(the_index);
+            }
+        }
+        var change = function(_index){
+            for(var j=0;j<all_img.length;j++){
+                all_img[j].className="";
+            }
+            all_img[_index].className="active";
+        };
+        var timer=setInterval(function () { the_index = (the_index+1)%all_li.length;change(the_index);},1000);
+        var go_li = document.getElementsByClassName("go");
+        var back_li = document.getElementsByClassName("back");
+        go_li[0].onclick = function(){
+            the_index--;
+            if(the_index<0){
+                the_index+=all_li.length;
+            }
+            change(the_index);
+        };
+        back_li[0].onclick = function(){
+            the_index = (the_index+1)%all_li.length;
+            change(the_index);
+        };
+        div1[0].onmouseover = function(){
+            clearInterval(timer);
+            console.log(1);
+        };
+        div1[0].onmouseout = function(){
+            timer = setInterval(function () { the_index = (the_index+1)%all_li.length;change(the_index);},1000);
+            console.log(2);
+        }
+    </script>
+</body>
+</html>
