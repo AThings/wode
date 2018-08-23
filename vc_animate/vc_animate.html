@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="vc_animate.css">
+</head>
+<body>
+<div class="vc_animate">
+    <div class="box">
+        <ul>
+            <li><img src="01.jpg" alt=""></li>
+            <li><img src="02.jpg" alt=""></li>
+            <li><img src="03.jpg" alt=""></li>
+            <li><img src="04.jpg" alt=""></li>
+            <li><img src="05.jpg" alt=""></li>
+            <li><img src="01.jpg" alt=""></li>
+        </ul>
+    </div>
+    <div >
+        <ul class="next">
+            <li>&lt;</li>
+            <li>&gt;</li>
+        </ul>
+        <ul class="nav">
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+    </div>
+
+</div>
+    <script>
+       // var oUl = document.getElementsByClassName("box")[0].getElementsByTagName("ul")[0];
+       // var timer1,timer2;
+       // var timecontral = 0;
+       // var change = function () {
+       //     timer1 = setInterval(function () {
+       //         var thisLeft = oUl.offsetLeft;
+       //         if(thisLeft%490===-0 && timecontral<1000){
+       //             timecontral+=8;
+       //         }
+       //         else{
+       //             timecontral = 0;
+       //             oUl.style.left = thisLeft-2+"px";
+       //         }
+       //         if(thisLeft===-2450){
+       //             oUl.style.left=0;
+       //         }
+       //     },8);
+       // };
+       // change();
+       // var aLi = document.getElementsByClassName("nav")[0].getElementsByTagName("li");
+       // var box = document.getElementsByClassName("box")[0];
+       // box.onmouseover = function () {
+       //
+       // };
+       // box.onmouseout = function () {
+       // }
+
+
+
+       //  var nowImg = 0;
+       //  var aNavLi = document.getElementsByClassName("nav")[0].getElementsByTagName("li");
+       //  var oUl = document.getElementsByClassName("box")[0].getElementsByTagName("ul")[0];
+       //  var aImg = document.getElementsByClassName("box")[0].getElementsByTagName("img");
+       //  var aNextLi = document.getElementsByClassName("next")[0].getElementsByTagName("li");
+       //  var timer1;
+       //  for(var i=0;i<aImg.length;i++){
+       //     aImg[i].index=i;
+       //     aImg[i].tureLeft=-490*i;
+       // }
+       // var oVc = document.getElementsByClassName("vc_animate")[0];
+       // oVc.onmouseover= function () {
+       //     clearInterval(timer2);
+       // };
+       // oVc.onmouseout = function () {
+       //     lunbo();
+       // };
+       //  var changeImg = function (newImg) { //newImg 要变成的图片
+       //          if(newImg===0){
+       //             if((5-nowImg)<=(nowImg)){
+       //                 newImg=5;
+       //             }
+       //          }
+       //          if(newImg===4 && nowImg===0){
+       //              nowImg=5;
+       //              oUl.style.left=aImg[nowImg].tureLeft+"px";
+       //          }
+       //
+       //          var thisleft = oUl.offsetLeft;
+       //          clearInterval(timer1);
+       //          timer1 = setInterval(function () {
+       //              if(newImg>nowImg) {
+       //                  thisleft-=2;
+       //              }else if(newImg===nowImg){
+       //
+       //              }else if(newImg<nowImg){
+       //                  thisleft+=2;
+       //              }
+       //              nowImg=thisleft/-490;
+       //              if(thisleft===aImg[newImg].tureLeft){
+       //                  nowImg=newImg;
+       //                  for(var j=0;j<aNavLi.length;j++){
+       //                      aNavLi[j].className="";
+       //                  }
+       //                  aNavLi[nowImg%5].className="active";
+       //                  clearInterval(timer1);
+       //              }
+       //              if(thisleft===aImg[5].tureLeft){
+       //                  thisleft=0;
+       //                  nowImg=0;
+       //              }
+       //              oUl.style.left = thisleft+"px";
+       //          },4);
+       //  };
+       //  var navChange = function () {
+       //      for(var i=0;i<aNavLi.length;i++){
+       //          aNavLi[i].index=i;
+       //          aNavLi[i].onmouseover = function (ev) {
+       //              var newImg = this.index;
+       //              for(var j=0;j<aNavLi.length;j++){
+       //                  aNavLi[j].className="";
+       //              }
+       //              aNavLi[this.index].className="active";
+       //              changeImg(newImg);
+       //          };
+       //      }
+       //  };
+       //  navChange();
+       //  var nextChange = function () {
+       //      for(var i=0;i<aNextLi.length;i++){
+       //          aNextLi[i].index=i;
+       //          aNextLi[i].onmouseover = function (ev) {
+       //              for(var j=0;j<aNextLi.length;j++){
+       //                  aNextLi[j].className="";
+       //              }
+       //              this.className="active";
+       //          };
+       //          aNextLi[i].onmouseout = function (ev) {
+       //              this.className="";
+       //          };
+       //          aNextLi[i].onclick = function (ev) {
+       //              var newImg=nowImg;
+       //              if(this.innerHTML==="&gt;"){
+       //                  newImg=Math.floor(newImg);
+       //                  newImg = (newImg+1)%5;
+       //              }
+       //              if(this.innerHTML==="&lt;"){
+       //                  newImg=Math.ceil(newImg);
+       //                  newImg--;
+       //                  if(newImg<0)
+       //                      newImg=4;
+       //              }
+       //              changeImg(newImg);
+       //          }
+       //      }
+       //  };
+       //  nextChange();
+       // var timer2;
+       // var lunbo = function () {
+       //     timer2 = setInterval(function () {
+       //         var newImg = nowImg+1;
+       //         changeImg(newImg);
+       //     },2940)
+       // };
+       // lunbo();
+
+
+        var now_Img = 0;
+        var oVc = document.getElementsByClassName("vc_animate")[0];
+        var oUl = document.getElementsByClassName("box")[0].getElementsByTagName("ul")[0];
+        var aImg = oUl.getElementsByTagName("img");
+        var aNavLi = document.getElementsByClassName("nav")[0].getElementsByTagName("li");
+        var aNextLi = document.getElementsByClassName("next")[0].getElementsByTagName("li");
+        var timer1,timer2;
+        var mutex=1,nutex=0,RUN=true;
+        for(i=0;i<aNavLi.length;i++)
+        {
+            aNavLi[i].index=i;
+            aNavLi[i].onclick = function (ev) {
+                RUN=true;
+                clearInterval(timer1);
+                clearInterval(timer2);
+                mutex=0;
+                nutex=1;
+                changeImg(this.index);
+            }
+        }
+        for(i=0;i<aNextLi.length;i++)
+        {
+            aNextLi[i].index=i;
+            aNextLi[i].onclick = function (ev) {
+                clearInterval(timer1);
+                clearInterval(timer2);
+                RUN=true;
+                for(i=0;i<aNextLi.length;i++)
+                {
+                    aNextLi[i].className="";
+                }
+                this.className="active";
+                if(this.index===0)
+                {
+                    this.className="active";
+                    newImg=Math.ceil(now_Img);
+                    newImg--;
+                    if(newImg<0)
+                        newImg=4;
+                }
+                else
+                {
+                    this.className="active";
+                    newImg=Math.floor(now_Img);
+                    newImg=(newImg+1)%5;
+                }
+                mutex=0;
+                nutex=1;
+                changeImg(newImg);
+            }
+        }
+        var changeImg = function(newImg){
+            for(i=0;i<aNavLi.length;i++)
+            {
+                aNavLi[i].className="";
+            }
+            aNavLi[newImg].className="active";
+            if(now_Img===0 || now_Img===5)
+            {
+                if(5-newImg<newImg)
+                {
+                    now_Img=5;
+                }
+                else
+                {
+                    now_Img=0;
+                }
+                oUl.style.left=now_Img*-490+"px";
+            }
+            if(newImg===0)
+            {
+                if(5-now_Img<now_Img)
+                {
+                    newImg=5;
+                }
+            }
+            pxchange=(now_Img-newImg)/Math.abs(now_Img-newImg);
+            newLeft=newImg*-490;
+            if(nutex===1)
+            {
+                nutex=0;
+                timer1=setInterval(function () {
+                    now_Img=Math.abs(oUl.offsetLeft/490);
+                    if(oUl.offsetLeft===newLeft)
+                    {
+                        mutex=1;
+                        clearInterval(timer1);
+                        vc_animate();
+                    }
+                    else
+                    {
+                        oUl.style.left=oUl.offsetLeft+pxchange*10+"px";
+                    }
+                },16);
+            }
+
+        };
+        var vc_animate = function () {
+            if(mutex===1) {
+                mutex=0;
+                timer2 = setInterval(function () {
+                    if(RUN===true)
+                    {
+                        clearInterval(timer2);
+                        newImg = (now_Img + 1)%5;
+                        nutex=1;
+                        changeImg(newImg);
+                    }
+                }, 2000)
+            }
+        };
+        vc_animate();
+        oVc.onmouseover = function () {
+                RUN=false;
+        };
+       oVc.onmouseout = function () {
+           RUN=true;
+       }
+    </script>
+</body>
+</html>

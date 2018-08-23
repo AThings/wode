@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /**{*/
+            /*margin:0;*/
+            /*padding: 0;*/
+        /*}*/
+        #can{
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="can" height="400" width="400"></canvas>
+    <script src="jquery-3.3.1(1).js"></script>
+    <script>
+        var oCan = $("#can");
+        var can = oCan.get(0).getContext("2d");
+        oCan.on("mousedown",function (e) {
+            can.strokeStyle="white";
+            can.lineWidth="2";
+            sign(e);
+            oCan.on("mousemove",sign);
+        });
+        $(document).on("mouseup",function () {
+           oCan.unbind("mousemove",sign);
+        });
+        function sign(e) {
+            let nextX=e.clientX;
+            let nextY=e.clientY;
+            can.beginPath();
+            can.moveTo(0,0);
+            can.lineTo(nextX,nextY);
+            can.stroke();
+            can.beginPath();
+            can.moveTo(oCan.get(0).offsetWidth,0);
+            can.lineTo(nextX,nextY);
+            can.stroke();
+            can.beginPath();
+            can.moveTo(0,oCan.get(0).offsetHeight);
+            can.lineTo(nextX,nextY);
+            can.stroke();
+            can.beginPath();
+            can.moveTo(oCan.get(0).offsetWidth,oCan.get(0).offsetHeight);
+            can.lineTo(nextX,nextY);
+            can.stroke();
+        }
+
+
+        // var oCan = document.getElementById("can");
+        // var can = oCan.getContext("2d");
+        // var nowX;
+        // var nowY;
+        // oCan.addEventListener("mousedown",function (e) {
+        //     nowX=e.clientX;
+        //     nowY=e.clientY;
+        //     oCan.addEventListener("mousemove",sign,false);
+        // },false);
+        // document.addEventListener("mouseup",function () {
+        //     oCan.removeEventListener("mousemove",sign,false);
+        // },false);
+        // function sign(e) {
+        //     can.beginPath();
+        //     can.strokeStyle="white";
+        //     can.lineWidth="2";
+        //     can.moveTo(nowX,nowY);
+        //     can.lineTo(e.clientX,e.clientY);
+        //     can.stroke();
+        //     nowX=e.clientX;
+        //     nowY=e.clientY;
+        // }
+
+    </script>
+</body>
+</html>

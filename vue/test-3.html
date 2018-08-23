@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app" >
+        <fengjialue v-bind:cancer="name" v-on:la="add"></fengjialue>
+        <xiaofeng v-bind:xiaocancer="xiaoname"></xiaofeng>
+        {{num}}
+        <div :is="seeComponent">
+
+        </div>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        Vue.component("fengjialue",{
+            template:`<div>
+                            <h1>{{lala}}fengjialue是一个全局组件{{cancer}}</h1>
+                            <button type="button" v-on:click="$emit('la')">hahaha</button>
+                        </div>`,
+            props:["cancer","lala"]
+        });
+        new Vue({
+            el:"#app",
+            data:{
+                name:"king of world",
+                xiaoname:"king of me",
+                num:0,
+                seeComponent:"xiaofeng"
+            },
+            components:{
+                "xiaofeng":{
+                    template:`<div>
+                                    <span>xiaofeng是一个局部组件{{xiaocancer}}</span>
+                                    <fengjialue lala="hh "></fengjialue>
+                                </div>`,
+                    props:["xiaocancer"]
+                }
+            },
+            methods:{
+                add:function(){
+                    this.num++;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

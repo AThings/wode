@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="../../jquery/jquery-3.3.1(1).js"></script>
+<script>
+
+    var aa="123";
+    function foo(name,age) {
+        console.log(this.aa);
+        console.log(name);
+        console.log(age);
+    }
+    // foo("lisi","20");
+    var obj={
+        aa:"abcd"
+    };
+    //foo.call(obj,"zhangsan","30");
+    //foo.apply(obj,["zhangsan","30"]);
+    var foo2 = foo.bind(obj,"xiaohong");
+    foo2("21");
+
+    // function run(url) {
+    //     $.get(url,function (res) {
+    //         console.log(res);
+    //         hw.next();
+    //     })
+    // }
+    // function* test() {
+    //     yield run("abcd.json");
+    //     yield run("b.json");
+    //     return run("c.json");
+    // }
+    //
+    // let hw = test();
+    // hw.next();
+
+
+    // function Person(name,age) {
+    //     this.name=name;
+    //     this.age=age;
+    // }
+    // Person.prototype.showName = function(){
+    //     console.log(this.name,this.age);
+    //     console.log(this);
+    // };
+    //
+    // let person1 = new Person("lisi","12");
+    // person1.showName();
+    // function Student(name,age) {
+    //     Person.call(this,name,age);
+    // }
+    // Student.prototype = new Person();
+    // let student1 = new Student("zhangsan","20");
+    // student1.showName();
+    // Student.prototype.constructor = Student;
+    // console.log(Student.prototype.constructor);
+</script>
+</body>
+</html>

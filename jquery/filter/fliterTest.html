@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="text">
+    <ul>
+        <li>heida</li>
+        <li>linda</li>
+        <li>nongda</li>
+        <li>ligong</li>
+        <li>gongda</li>
+    </ul>
+    <script src="../jquery-3.3.1(1).js"></script>
+    <script>
+        $("input").on("keyup",function () {
+            $("li").hide();
+            $("li:contains("+this.value+")").show();
+        })
+    </script>
+</body>
+</html>

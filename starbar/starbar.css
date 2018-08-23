@@ -1,0 +1,194 @@
+/*默认样式*/
+*{
+    margin:0;
+    padding: 0;
+}
+ul{
+    list-style-type: none;
+}
+a{
+    text-decoration: none;
+}
+.clearfix::after{
+    content:".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+/*leftNav start*/
+.leftNav{
+    width:30%;
+    height: 100%;
+    background: white;
+    position: fixed;
+    left:0;
+    box-shadow: 0 0 2px black;
+}
+.leftTopNav{
+    width: 100%;
+    padding: 24px;
+    box-sizing: border-box;
+}
+.leftTopNav .kanzi{
+    display: inline-block;
+}
+.leftTopNav .kanzi span{
+    font-weight: 700;
+    line-height: 30px;
+    margin-right: 20px;
+}
+.leftTopNav li:last-child{
+    margin-right: 0;
+}
+.bottomContent{
+    width: 100%;
+    height: calc(100% - 50px);
+    display: table;
+}
+.bottomContent .line{
+    font-weight: 700;
+    font-size: 26px;
+    letter-spacing: 1px;
+}
+.dispaly-1{
+    margin-bottom: 10px;
+}
+.inContent{
+    display: table-cell;
+    vertical-align: middle;
+    padding: 0 24px 0 84px;
+}
+.a_img{
+    display: inline-block;
+    width:28px;
+    height:24px;
+    background: blueviolet;
+}
+.inContent a{
+    margin-right:20px;
+}
+/*leftNav finish*/
+
+/*overlay start*/
+.overlay{
+    height: 100%;
+    width: 30%;
+    position: fixed;
+    top:0;
+    display: table;
+    overflow: hidden;
+    background: white;
+    visibility: hidden;
+}
+.overlay .overHeader{
+    padding: 24px;
+    box-sizing: border-box;
+}
+.overlay .tableRow{
+    display: table-row;
+}
+.overlay .tableCell{
+    display: table-cell;
+    vertical-align: middle;
+    padding: 24px 20px 24px 80px;
+    transition: all 0.2s ease;
+    opacity: 0;
+    transform: scale(1.2);
+}
+.overlay .tableCell li{
+    font-size: 18px;
+    font-weight: 700;
+    padding: 8px 0;
+}
+.overlay .tableCell .cut-off{
+    border-top: 1px solid black;
+    margin:12px 0;
+    padding: 0;
+    width:100%
+}
+.overlay .overlayFooter{
+    padding: 0 20px 24px 80px;
+}
+.active{
+    background: white;
+    visibility: visible;
+    z-index: 999;
+}
+.overlay .active{
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
+}
+/*overlay finish*/
+
+/*leftNav and overlay start*/
+.inFooter a span{
+    color: green;
+}
+.inFooter{
+    height: 40px;
+}
+.inFooter .register{
+    padding: 2px 12px;
+    border:1px solid green;
+    border-radius: 15px/50%;
+}
+.imgLogo{
+    width:30px;
+    float: left;
+    margin-right: 20px;
+}
+.icon{
+    width:30px;
+    float: right;
+}
+/*leftNav and overlay finish*/
+/*content start*/
+.content{
+    margin-left:30%;
+    width:70%;
+    background: blue;
+}
+.content .slide_img{
+    width: 100%;
+    position: relative;
+}
+.content .slide_img ul{
+    width: 400%;
+}
+.content li{
+    width:25%;
+    float: left;
+}
+.content li img{
+    width: 100%;
+}
+.content .leftgo{
+    position: absolute;
+    top:42%;
+    right:0;
+}
+.wall{
+    margin-bottom: 20px;
+    width: 100%;
+}
+/* 小于1024时的样式*/
+@media (max-width:1024px) {
+    .leftNav{
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+    .bottomContent{
+        height: auto;
+    }
+    .content{
+        margin-left: 0;
+        width:100%;
+    }
+    .overlay{
+        width: 100%;
+        height: 100%;
+    }
+}

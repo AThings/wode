@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="div1">
+    <div id="div2">
+
+    </div>
+    <!--123-->
+    <div id="div3">
+
+    </div>
+    <span id="span1"></span>
+</div>
+<script>
+  var oDiv2 = document.getElementById("div2");
+  var oDiv3 = document.getElementById("div3");
+  var i;
+  var j;
+  for(i=0,j=oDiv2.nextSibling;i<oDiv2.nextSibling.length;i++)
+  {
+      if(j.nodeType===1)
+      {
+          console.log(j);
+          break;
+      }
+      j=j.nextSibling;
+  }
+  if(i===oDiv2.nextSibling.length)
+      console.log("NULL");
+</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table td{
+            width: 200px;
+        }
+        thead{
+            background: blueviolet;
+            text-align: center;
+        }
+        tbody tr:nth-child(2n){
+            background: plum;
+        }
+    </style>
+</head>
+<body>
+    <table border="2">
+        <thead>
+        <tr>
+            <td>学号</td>
+            <td>姓名</td>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>张三</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>李四</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>王五</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>赵六</td>
+            </tr>
+        </tbody>
+    </table>
+    <script src="../jquery-3.3.1(1).js"></script>
+    <script>
+        var obj=$("tbody td:nth-child(2n)");
+        obj.on("click",function (e) {
+            if($(this).children("input").length===0)
+            {
+                var inputObj=$("<input type='text'/>");
+                inputObj.val(this.innerText);
+                $(this).empty();
+                $(this).append(inputObj);
+                inputObj.focus();
+            }
+        });
+        obj.on("focusout",function () {
+            var child=$(this).children("input");
+            $(this).text(child.val());
+        })
+    </script>
+</body>
+</html>

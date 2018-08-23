@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .active{
+            background: gold;
+        }
+    </style>
+</head>
+<body>
+    <h1>todolist</h1>
+    <div class="search">
+        <input type="text" v-model="searchName">
+        <button type="button" @click="search">搜索</button>
+    </div>
+    <div class="add">
+        商品名称：<input type="text" v-model="addName">
+        商品价格：<input type="text" v-model.number="addValue">
+        <button type="button" @click="addlist">添加</button>
+    </div>
+
+    <table border="2">
+        <thead>
+            <tr>
+                <th width="100px">选择</th>
+                <th width="100px">商品名称</th>
+                <th width="100px">商品价格</th>
+                <th width="100px">删除</th>
+            </tr>
+        </thead>
+        <tbody id="shoppingList">
+        <tr :class="{active:a.isSelect}" v-for="(a,index) in shopList" v-show="a.show" @click="checkLine(a)" :key="a.id">
+            <td><input type="checkbox" :checked=a.isSelect></td>
+            <td>{{a.name}}</td>
+            <td>{{a.value}}</td>
+            <td>
+                <button type="button" @click="remove">删除</button>
+            </td>
+        </tr>
+        </tbody>
+        <tfoot id="totalPrices">
+        <tr>
+            <td>
+                <button type="button">删除选中</button>
+            </td>
+            <td colspan="3">
+                总价：{{totalPrices}}元
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+
+    <script src="../vue.js"></script>
+    <script>
+        let theid=5;
+        let _search = new Vue({
+           el:".search",
+           data:{
+               searchName:""
+           },
+            methods:{
+               search:function(){
+                   if(this.searchName){
+                       for(let i=0;i<app.shopList.length;i++) {
+                           app.shopList[i].show=false;
+                           if( app.shopList[i].name.indexOf(this.searchName) !== -1){
+                               app.shopList[i].show=true;
+                           }
+                       }
+                   }
+                   else{
+                       console.log("2");
+                        for(let i=0;i<app.shopList.length;i++) {
+                            app.shopList[i].show=true
+                        }
+                   }
+               }
+            }
+        });
+        let add = new Vue({
+           el:".add",
+           data:{
+               addName:"请输入名称",
+               addValue:0
+           },
+           methods:{
+               addlist:function () {
+                   app.shopList.push({id:theid,name:""+this.addName,value:""+this.addValue,show:true,isSelect:false});
+                   console.log(app.shopList);
+                   theid++;
+               }
+           }
+        });
+        let app = new Vue({
+           el:"#shoppingList",
+           data:{
+               shopList:[
+                   {id:0,name:"衣服",value:123,show:true,isSelect:false},
+                   {id:1,name:"袜子",value:42,show:true,isSelect:false},
+                   {id:2,name:"鞋",value:453,show:true,isSelect:false},
+                   {id:3,name:"帽子",value:536,show:true,isSelect:false},
+                   {id:4,name:"手套",value:63,show:true,isSelect:false}
+               ]
+           },
+           methods:{
+               checkLine:function(obj){
+                    obj.isSelect=!obj.isSelect;
+
+               }
+           }
+        });
+        let totalPrices = new Vue({
+            el:"#totalPrices",
+            data:{
+
+            },
+            computed:{
+                totalPrices:function(){
+                    let total = 0;
+                    for(let i = 0 ; i < app.shopList.length;i++)
+                    {
+                        if(app.shopList[i].isSelect === true)
+                        {
+                            total+=app.shopList[i].value;
+                        }
+                    }
+                    return total;
+                }
+            },
+            methods:{
+                remove:function () {
+                    
+                }
+            }
+        })
+    </script>
+</body>
+</html>

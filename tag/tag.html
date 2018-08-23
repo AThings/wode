@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="tag.css">
+</head>
+<body>
+    <div class="out_border">
+        <div class="tag_area">
+            <div class="top_nav">
+                <ul class="nav">
+                    <li class="first name">第一课</li>
+                    <li class="second name">第二课</li>
+                    <li class="third name">第三课</li>
+                </ul>
+            </div>
+            <div class="un_nav">
+                <ul class="bot" id="ff">
+                    <li class="f">网页样式设计</li>
+                    <li class="f">网页样式设计</li>
+                    <li class="f">网页样式设计</li>
+                    <li class="f">网页样式设计</li>
+                    <li class="f">第一页</li>
+                </ul>
+                <ul class="bot" id="ss">
+                    <li class="s">爱啥啥</li>
+                    <li class="s">随便啦</li>
+                    <li class="s">第二页</li>
+                </ul>
+                 <ul class="bot" id="tt">
+                     <li class="t">就这样</li>
+                     <li class="t">第三页</li>
+                 </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        var a_li = document.getElementsByClassName("name");
+        for(var i=0;i<a_li.length;i++){
+            a_li[i].index =i;
+            a_li[i].onmouseover = function (ev) {
+                this.style.background = "#F8F8FF";
+                this.style.color = "black";
+                if(this.index===0){
+                    document.getElementById("ff").style.display="block";
+                    document.getElementById("ss").style.display="none";
+                    document.getElementById("tt").style.display="none";
+                }
+                else if(this.index===1){
+                    document.getElementById("ff").style.display="none";
+                    document.getElementById("ss").style.display="block";
+                    document.getElementById("tt").style.display="none";
+                }
+                else if(this.index===2){
+                    document.getElementById("ff").style.display="none";
+                    document.getElementById("ss").style.display="none";
+                    document.getElementById("tt").style.display="block";
+                }
+            };
+            a_li[i].onmouseout = function (ev) {
+                this.style.background = "";
+                this.style.color = "";
+            }
+        }
+    </script>
+</body>
+</html>

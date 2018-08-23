@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="tag2.css">
+</head>
+<body>
+<div class="out_border">
+    <div class="tag_area">
+        <div class="top_nav">
+            <ul class="nav">
+                <li class="active">第一课</li>
+                <li class="">第二课</li>
+                <li class="">第三课</li>
+            </ul>
+        </div>
+        <div class="un_nav">
+            <ul class="active" id="ff">
+                <li class="f">网页样式设计</li>
+                <li class="f">网页样式设计</li>
+                <li class="f">网页样式设计</li>
+                <li class="f">网页样式设计</li>
+                <li class="f">第一页</li>
+            </ul>
+            <ul class="" id="ss">
+                <li class="s">爱啥啥</li>
+                <li class="s">随便啦</li>
+                <li class="s">第二页</li>
+            </ul>
+            <ul class="" id="tt">
+                <li class="t">就这样</li>
+                <li class="t">第三页</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script>
+    var a_nav = document.getElementsByClassName("nav");
+    var a_li = a_nav[0].getElementsByTagName("li");
+    var u_nav = document.getElementsByClassName("un_nav");
+    var u_ul = u_nav[0].getElementsByTagName("ul");
+    for(var i=0;i<a_li.length;i++){
+        a_li[i].index=i;
+        a_li[i].onmouseover = function (ev) {
+            for(var j=0;j<a_li.length;j++){
+                a_li[j].className="";
+                u_ul[j].className="";
+            }
+            this.className="active";
+            u_ul[this.index].className="active";
+        };
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .div1{
+            width:200px;
+            height:200px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <button type="button" class="fadin">fadin</button>
+    <button type="button" class="fadout">fadout</button>
+    <button type="button" class="fadToggle">fadToggle</button>
+    <button type="button" class="slideDown">slideDown</button>
+    <button type="button" class="slideUp">slideUp</button>
+    <button type="button" class="slideToggle">slideToggle</button>
+    <button type="button" class="animate">animate</button>
+    <div class="div1"></div>
+
+</body>
+<script src="../jquery-3.3.1(1).js"></script>
+<script>
+    $(".fadin").on("click",function () {
+        $(".div1").fadeIn();
+    });
+    $(".fadout").on("click",function () {
+        $(".div1").fadeOut();
+    });
+    $(".fadToggle").on("click",function () {
+       $(".div1") .fadeToggle();
+    });
+    $(".slideDown").on("click",function () {
+        $(".div1").slideDown();
+    });
+    $(".slideUp").on("click",function () {
+        $(".div1").slideUp();
+    });
+    $(".slideToggle").on("click",function () {
+        $(".div1").slideToggle();
+    });
+    $(".animate").on("click",function () {
+        $(".div1").animate({
+            width:400,
+            height:400
+        },1000,"swing",function () {
+            alert("done");
+        })
+    })
+</script>
+</html>

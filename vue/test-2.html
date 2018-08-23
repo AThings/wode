@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <!--<div v-test="'red'">hello world</div>-->
+        <!--<button type="button" @click="change">change</button>-->
+        <!--{{arr}}{{obj}}-->
+
+        <!--<button @click="add">add</button>{{num}}-->
+        <!--<fengjialue></fengjialue>-->
+        <!--<test></test>-->
+
+        <template id="com1">
+            <div>
+                <h1>com1</h1>
+                <com2></com2>
+            </div>
+        </template>
+        <template id="com2">
+            <h1>com2</h1>
+        </template>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        // Vue.directive("test",function (el,binding,vnode) {
+        //     console.log(el);
+        //         console.log(binding);
+        //         console.log(vnode);
+        //     el.style.backgroundColor=binding.value;
+        // });
+        // Vue.component("fengjialue",{
+        //    template:`
+        //    <h1>hello world</h1>`
+        // });
+        Vue.component("com1",{
+            template:"#com1"
+        }
+        );
+        Vue.component("com2",{
+            template:"#com2"
+        });
+        new Vue({
+           el:"#app",
+            data:{
+               // arr:[1,2,3,4,5],
+               //  obj:{
+               //     name:"Lisi"
+               //  }
+                num:0
+            },
+            methods:{
+               change(){
+                   console.log(1);
+                   this.arr[2]='a';
+                   this.obj.name="xiaoming";
+                   this.obj.age = "20";
+               },
+                add(){
+                   this.num++;
+                }
+            },
+            components:{
+               "test":{
+                   template:`<h1>aaaaaaaa</h1>`
+               }
+            }
+            // beforeCreate(){
+            //    console.log("beforeCreate");
+            // },
+            // created(){
+            //    console.log("created");
+            // },
+            // beforeMount(){
+            //    console.log("beforeMount")
+            // },
+            // mounted(){
+            //     console.log("mounted")
+            // },
+            // beforeUpdate(){
+            //     console.log("beforeUpdate")
+            // },
+            // updated(){
+            //     console.log("updated")
+            // },
+
+        });
+    </script>
+</body>
+</html>

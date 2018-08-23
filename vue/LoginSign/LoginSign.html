@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .dialog-bg{
+            position: fixed;
+            left:0;
+            top:0;
+            bottom:0;
+            right:0;
+            background: rgba(0,0,0,.3);
+        }
+        .dialog-content{
+            position: absolute;
+            left:50%;
+            top:50%;
+            transform: translate(-50%,-50%);
+            border: 1px solid black;
+            width:400px;
+            height:300px;
+        }
+        .dialog-header{
+            height: 50px;
+            background: #000;
+            color:white;
+            line-height: 50px;
+            padding: 0 10px;
+        }
+        .close{
+            float: right;
+        }
+    </style>
+</head>
+<body>
+<div id="sign">
+    <button type="button" @click="loginInshow = true">登录</button>
+    <button type="button" @click="registerInshow = true">注册</button>
+    <my-dialog v-show="loginInshow" v-on:close="loginInshow = false">
+        <span slot="title">登录</span>
+        <div slot="content">
+            用户名 <input type="text">
+            <button>登录</button>
+        </div>
+    </my-dialog>
+    <my-dialog v-show="registerInshow" v-on:close="registerInshow = false">
+        <span slot="title">注册</span>
+        <div slot="content">
+            用户名 <input type="text">
+            <button>注册</button>
+        </div>
+    </my-dialog>
+</div>
+<template id="dialog-temp">
+    <div>
+        <div class="dialog-bg">
+            <div class="dialog-content">
+                <div class="dialog-header">
+                    <slot name="title">登录</slot>
+                    <span class="close" @click="$emit('close')">X</span>
+                </div>
+                <div class="dialog-inner">
+                    <slot name="content"></slot>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+<script src="../vue.js"></script>
+<script>
+    Vue.component("my-dialog",{
+        template:`#dialog-temp`
+    });
+
+    new Vue({
+        el:"#sign",
+        data:{
+            loginInshow:false,
+            registerInshow:false
+        },
+        methods:{
+            // close:function () {
+            //     this.loginInshow=false;
+            //     this.registerInshow=false;
+            // }
+        }
+    });
+
+</script>
+</body>
+</html>

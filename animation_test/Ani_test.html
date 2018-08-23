@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            width:200px;
+            height:200px;
+            border:1px dashed black;
+            perspective: 900px;
+            position: relative;
+        }
+        .content{
+            width:200px;
+            height:200px;
+            background: blue;
+            transform: rotateY(0);
+            position: absolute;
+            transform-style: preserve-3d;
+            transition: all 1s ease ;
+        }
+        .content:hover{
+            transform: rotateY(180deg);
+        }
+        .content2{
+            width:200px;
+            height:200px;
+            background: red;
+            transform: rotateY(-180deg);
+            position: absolute;
+            top:0;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="content">
+        lalalala
+        <div class="content2">
+            hahahaha
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

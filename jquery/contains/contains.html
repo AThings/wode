@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul>
+        <li>a1b2c3d4</li>
+        <li>e5f6g7h8</li>
+        <li>i9j0k1l2</li>
+        <li>m3n4o5p6</li>
+        <li>q7r9s0t1</li>
+    </ul>
+    <script src="../jquery-3.3.1(1).js"></script>
+    <script>
+
+        let b = $("li:nth-child(1)");
+        b.get(0).innerHTML=b.get(0).innerHTML+"<li>inmylifez</li>";
+        console.log(b.get(0).innerHTML);
+        console.log(b.get(0).innerText);
+        let a = $("li:contains('z')");
+        console.log(a.get(0).innerHTML);
+        console.log(a.get(0).innerText);
+        a.css("color","red");
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>你爱好的运动是</h1>
+    <form action="">
+        <input type="checkbox" id="1">足球
+        <input type="checkbox" id="2">排球
+        <input type="checkbox" id="3">篮球
+        <input type="checkbox" id="4">羽毛球
+        <button class="All" type="button">全选</button>
+        <button class="None" type="button">全不选</button>
+        <button class="mir" type="button">反选</button>
+    </form>
+    <script src="../jquery-3.3.1(1).js"></script>
+    <script>
+        $(".All").on("click",function () {
+            $("[type=checkbox]").prop("checked",true);
+        });
+        $(".None").on("click",function () {
+            $("[type=checkbox]").prop("checked",false);
+        });
+        $(".mir").on("click",function () {
+            // Mir=$("[type=checkbox]");
+            // Mir.each(function (index,ele) {
+            //     if($(ele).prop("checked"))
+            //         $(ele).prop("checked",false);
+            //     else
+            //         $(ele).prop("checked",true);
+            // });
+            var ischeck = $("input:checkbox:checked");
+            var notcheck = $("input:checkbox:not(:checked)");
+            ischeck.prop("checked",false);
+            notcheck.prop("checked",true);
+        });
+    </script>
+</body>
+</html>

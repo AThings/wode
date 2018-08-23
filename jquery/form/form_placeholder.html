@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .active{
+            background: pink;
+        }
+        .sec_form .choose{
+            height:50px;
+        }
+    </style>
+</head>
+<body>
+<form action="" class="fir_form">
+    <h4>个人基本信息</h4>
+    名称：<input type="text" class="choose" value="名称"><br>
+    密码：<input type="password" class="choose" value="密码"><br>
+    详细信息：<textarea name="" id="1" cols="30" rows="3" class="choose" >详细信息</textarea>
+</form>
+<form action="" class="sec_form">
+    <button type="button">变大</button>
+    <button type="button">变小</button>
+    <br>
+    <textarea name="" id="2" cols="30" rows="10" class="choose">sdkasjd lkjaslkd jawueil jdlkascndsd iwue92 831092ril anc2snsd2 9381092ue</textarea>
+</form>
+<script src="../jquery-3.3.1(1).js"></script>
+<script>
+    var obj=$(".fir_form .choose");
+    obj.focus(function () {
+        $(this).addClass("active");
+        if(this.value===this.defaultValue)
+        $(this).prop("value",null);
+    });
+    obj.blur(function () {
+        $(this).removeClass("active");
+        if(!this.value)
+        $(this).prop("value",this.defaultValue);
+    });
+
+    var obj2=$(".sec_form .choose");
+    var bigbtn=$("button:eq(0)");
+    var smallbtn=$("button:eq(1)");
+    bigbtn.on("click",function () {
+        if(obj2.height()<300){
+            obj2.height(obj2.height()+10);
+        }
+    });
+    smallbtn.on("click",function () {
+        if(obj2.height()>50){
+            obj2.height(obj2.height()-10);
+        }
+    });
+</script>
+</body>
+</html>

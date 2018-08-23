@@ -1,0 +1,30 @@
+*{
+    margin :0;
+    padding: 0;
+}
+.back{
+    width: 200px;
+    height:123.6px;
+    background: #9d9d9d;
+    margin: -61.8px 0 0 -100px;
+    position:absolute ;
+    top: 50%;
+    left:50%;
+
+}
+.time{
+    font-size: 30px;
+    text-align: center;
+    line-height: 60px;
+}
+.button{
+    margin:18px 0 0 70px;
+    width: 60px;
+    height:30px;
+}
+.out_but{
+    width: 200px;
+    height: 50px;
+
+}
+

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function setCookies(key,value,expires) {
+        var date = new Date();
+        date.setDate(date.getDate() + expires);
+        document.cookie = key + "=" + value + ";expires="+date.toUTCString();
+    }
+    function getCookies(key) {
+        var theCookies = document.cookie.split(";");
+        var finishCookies = [];
+        for(var i=0;i<theCookies.length;i++)
+        {
+            theCookies[i] = theCookies[i].trim();
+            finishCookies = finishCookies.concat(theCookies[i].split("=")) ;
+        }
+        for(var j=0;j<finishCookies.length;j+=2)
+        {
+           if(key===finishCookies[j])
+               return finishCookies[j+1];
+           if(j+2>=finishCookies.length)
+               return null;
+        }
+    }
+    function delCookies(key) {
+        var date = new Date();
+        date.setDate(date.getDate() - 999);
+        var theValue = getCookies(key);
+        if(theValue!=null)
+        {
+            document.cookie = key + "=" + theValue + ";expires="+date.toUTCString();
+        }
+    }
+</script>
+</body>
+</html>

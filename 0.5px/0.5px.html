@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        div{
+            width:100px;
+            height:100px;
+            background: red;
+            margin:50% 50%;
+            position: absolute;
+            top:-50px;
+            left:-50px;
+
+        }
+        div::after{
+            content: "";
+            display: block;
+            width:200px;
+            height:200px;
+            border:1px solid black;
+            transform: scale(0.5);
+            transform-origin: 0 0;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div>
+
+    </div>
+</body>
+</html>

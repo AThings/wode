@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="../jquery-3.3.1(1).js"></script>
+<script>
+
+    Function.prototype.bind2 = function () {
+        let obj = Array.from(arguments)[0];
+        let args = Array.from(arguments).slice(1);
+        let _this=this;
+        return function () {
+            let bindArgs = Array.from(arguments);
+            let allArgs = args.concat(bindArgs);
+            _this.apply(obj,allArgs);
+        }
+    };
+
+    function  foo(name,age) {
+        console.log(this.school);
+        console.log(name);
+        console.log(age);
+    }
+    let obj = {
+        school:"linda"
+    };
+    let foo2 = foo.bind2(obj,"lisi");
+    foo2("20");
+</script>
+</body>
+</html>

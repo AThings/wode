@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table{
+            text-align: left;
+        }
+        thead{
+            border-bottom: 3px solid black;
+        }
+        thead th{
+            width:100px;
+        }
+        .show{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    筛选：<input type="text">
+    <table>
+        <thead>
+        <tr>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>暂住地</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>张三</td>
+            <td>男</td>
+            <td>地球中国人</td>
+        </tr>
+        <tr>
+            <td>李四</td>
+            <td>男</td>
+            <td>地球中国人</td>
+        </tr>
+        <tr>
+            <td>王五</td>
+            <td>女</td>
+            <td>火星地下人</td>
+        </tr>
+        <tr>
+            <td>淑芬</td>
+            <td>女</td>
+            <td>未来地球人</td>
+        </tr>
+        <tr>
+            <td>终结者12138</td>
+            <td>可男可女</td>
+            <td>未来机器人</td>
+        </tr>
+        <tr>
+            <td>♂♂</td>
+            <td>可攻可受</td>
+            <td>世界人</td>
+        </tr>
+        </tbody>
+    </table>
+</body>
+<script src="../jquery-3.3.1(1).js"></script>
+<script>
+    $("input").on("keyup",function () {
+        $("tbody tr").hide();
+        $("tbody tr:contains("+this.value+")").show();
+    });
+    console.log($("td").contents());
+</script>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+
+    .progress_bar{
+        width:500px;
+        height:20px;
+        border-radius: 5px;
+        background: #c0c0c047;
+        position: relative;
+        overflow: hidden;
+    }
+    .progress_bar::after{
+        content: "";
+        width: 500px;
+        height: 20px;
+        border:1px solid black;
+        border-radius: 5px;
+        position: absolute;
+        top:0;
+        box-sizing: border-box;
+    }
+   .in_probar{
+       width:0;
+       height:20px;
+       background: blue;
+       border-radius: 5px;
+   }
+</style>
+<body>
+    <div>
+        <div class="progress_bar">
+            <div class="in_probar"></div>
+        </div>
+        <span class="num">0</span>%
+        <br>
+        <button value="开始" class="stat">开始</button>
+    </div>
+<script>
+    var ooo = document.getElementsByClassName("progress_bar")[0];
+    var obj = document.getElementsByClassName("in_probar")[0];
+    var btn = document.getElementsByClassName("stat")[0];
+    var num = document.querySelector(".num");
+    var flag=0;
+    function run () {
+        obj.style.width=obj.offsetWidth+2+"px";
+        num.innerHTML=Math.floor((obj.offsetWidth*100)/ooo.offsetWidth);
+        if(obj.offsetWidth<=500)
+        {
+            requestAnimationFrame(run);
+        }
+        else
+        {
+            flag=0;
+        }
+    }
+    btn.onclick = function (e) {
+            obj.style.width=0;
+            if(flag===0)
+            {
+                flag=1;
+                requestAnimationFrame(run);
+            }
+    }
+</script>
+</body>
+</html>

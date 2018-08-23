@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="count_down.css">
+</head>
+<body>
+    <div class="back">
+        <div class="time">100</div>
+        <div class="out_but">
+            <input type="button" value="开始" class="button">
+        </div>
+    </div>
+
+    <script>
+        var but = document.getElementsByClassName("button")[0];
+        var time = document.getElementsByClassName("time")[0];
+        var flag;
+        but.onclick = function () {
+            if(this.value === "开始"){
+                start();
+            }
+            else if (this.value === "停止"){
+                this.value = "开始";
+                clearInterval(flag);
+            }
+            else if( this.value ==="重新开始"){
+                time.innerText = "100";
+                start()
+            }
+        };
+        var start = function () {
+            but.value = "停止";
+            flag = setInterval(function () {
+                time.innerText--;
+                if(time.innerText === "0")
+                {
+                    autostop();
+                }
+            },1000)
+        };
+        var autostop = function () {
+            clearInterval(flag);
+            but.value = "重新开始";
+        };
+    </script>
+</body>
+</html>

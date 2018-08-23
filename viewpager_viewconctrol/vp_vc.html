@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="vp_vc.css">
+</head>
+<body>
+<div class="wrapper">
+    <div class="img_body">
+        <div>
+            <img src="001.png" alt="1" class="active">
+            <img src="002.png" alt="2">
+            <img src="003.jpg" alt="3">
+        </div>
+        <div>
+            <ul class="up">
+                <li fenbian="left">&lt</li>
+                <li fenbian="right">&gt</li>
+            </ul>
+        </div>
+    </div>
+    <ul class="under">
+        <li>
+            <img src="001.png" alt="1">
+        </li>
+        <li>
+            <img src="002.png" alt="2">
+        </li>
+        <li>
+            <img src="003.jpg" alt="3">
+        </li>
+    </ul>
+</div>
+<script>
+    var out_img = document.getElementsByClassName("img_body")[0];
+    var all_li = document.getElementsByClassName("under")[0].getElementsByTagName("li");
+    var img = out_img.getElementsByTagName("img");
+    var theIndex = 0;
+    var setli = function(){
+        var li_width=parseInt(out_img.offsetWidth)/all_li.length;
+        var li_height = parseInt(out_img.offsetHeight)/all_li.length;
+        for(var i=0;i<all_li.length;i++){
+            all_li[i].style.width = li_width+"px";
+            all_li[i].style.height = li_height+"px";
+        }
+    };
+    setli();
+
+    function ResizeImages()
+    {
+        var myimg,oldwidth,oldheight;
+        var maxwidth=all_li[0].offsetWidth;
+        var maxheight=all_li[0].offsetHeight;
+        var imgs = document.getElementsByClassName('under')[0].getElementsByTagName('img');
+        for(i=0;i<imgs.length;i++){
+            myimg = imgs[i];
+            if(myimg.width > myimg.height)
+            {
+                if(myimg.width > maxwidth)
+                {
+                    oldwidth = myimg.width;
+                    myimg.height = myimg.height * (maxwidth/oldwidth)-1;
+                    myimg.width = maxwidth-1;
+                }
+            }else{
+                if(myimg.height > maxheight)
+                {
+                    oldheight = myimg.height;
+                    myimg.width = myimg.width * (maxheight/oldheight)-1;
+                    myimg.height = maxheight-1;
+                }
+            }
+            imgs[i].style.margin=(-myimg.height/2)+"px 0 0 "+(-myimg.width/2)+"px";
+        }
+    }
+    ResizeImages();
+    var change = function (n) {
+        for(var k=0;k<img.length;k++){
+            img[k].className = "";
+        }
+        img[n].classList.add("active");
+    };
+    for(var j=0;j<all_li.length;j++){
+        all_li[j].index=j;
+        all_li[j].onmouseover = function (ev) {
+            theIndex = this.index;
+            change(theIndex);
+        }
+    }
+    var lala = document.getElementsByClassName("up")[0].getElementsByTagName("li");
+        for(var k=0;k<lala.length;k++){
+            lala[k].onclick = function (ev) {
+                var flag = this.getAttribute("fenbian");
+                if(flag === "left"){
+                    theIndex--;
+                    if(theIndex<0)
+                        theIndex=2;
+                    change(theIndex);
+                }
+                else{
+                    theIndex = (theIndex+1)%all_li.length;
+                    change(theIndex);
+                }
+            }
+        }
+</script>
+</body>
+</html>

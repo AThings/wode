@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        table{
+            text-align: center;
+            border-collapse: collapse;
+        }
+        tbody tr:nth-child(odd){
+            background: orange;
+        }
+        tbody tr:nth-child(even){
+            background: yellow;
+        }
+        .form .active{
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th width="100px">&nbsp;</th>
+                <th width="100px">姓名</th>
+                <th width="100px">性别</th>
+                <th width="100px">暂住地</th>
+            </tr>
+        </thead>
+        <tbody class="form">
+        <tr>
+            <td><input type="radio" name="choosed"></td>
+            <td>张三</td>
+            <td>男</td>
+            <td>未来的牙克石</td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="choosed"></td>
+            <td>张三</td>
+            <td>男</td>
+            <td>未来的牙克石</td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="choosed"></td>
+            <td>张三</td>
+            <td>男</td>
+            <td>未来的牙克石</td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="choosed"></td>
+            <td>张三</td>
+            <td>男</td>
+            <td>未来的牙克石</td>
+        </tr>
+        </tbody>
+    </table>
+</body>
+<script src="../jquery-3.3.1(1).js"></script>
+<script>
+    $("tbody tr").on("click",function () {
+        $(this).addClass("active").siblings().removeClass("active").end().find(":radio").prop("checked",true);
+        // if($(this).find("input").prop("checked"))
+        // {
+        //     $(this).find("input").prop("checked",false)
+        // }
+        // else
+        // {
+        //     $(this).find("input").prop("checked",true)
+        // }
+    })
+</script>
+</html>

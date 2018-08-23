@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        ul{
+            list-style-type: none;
+        }
+        body{
+            background: #000;
+        }
+        .clearfix::after{
+            content: "";
+            display: block;
+            clear:both;
+        }
+        .box{
+            width:456px;
+            height:770px;
+            background: #000;
+            margin:auto;
+        }
+        .clock{
+            width:100%;
+            height:83px;
+            background: white;
+            line-height: 83px;
+            font-size: 20px;
+        }
+        .choose_remind{
+            width: 100%;
+            height:53px;
+            border-bottom: 1px solid gray;
+            color:white;
+            position: relative;
+        }
+        .choose_remind li{
+            float: left;
+            width:30px;
+            height:20px;
+            position: absolute;
+            top:15px;
+        }
+        .choosable{
+            background: white;
+            left:10px;
+        }
+        .fontca::after{
+            content: "可选";
+            position: absolute;
+            top:-1px;
+            right:-38px;
+        }
+        .choosed{
+            background: red;
+            left:90px;
+        }
+        .fontc::after{
+            content: "已选";
+            position: absolute;
+            top:-1px;
+            right:-38px;
+        }
+        .selled{
+            background: blue;
+            left:170px;
+        }
+        .fonts::after{
+            content: "已售";
+            position: absolute;
+            top:-1px;
+            right:-38px;
+        }
+        .set_bar{
+            width: 100%;
+            border-bottom: 1px solid gray;
+            position: relative;
+        }
+
+        .set_bar li{
+            width:30px;
+            height:20px;
+            margin:10px 5px;
+            float:left;
+        }
+        .set_bar li:nth-child(5n){
+            margin-right:60px;
+        }
+        .set_bar li:nth-child(10n){
+            margin-right:5px;
+        }
+        .tofixed{
+            width:30%;
+            position: fixed;
+            bottom: 0;
+            background: #000;
+        }
+        .choosed_set{
+            width:100%;
+            height:24px;
+            color:white;
+            font-size: 18px;
+        }
+        .choosed_set span:nth-child(2){
+            float: right;
+        }
+        .choosedList{
+            width:100%;
+            background: #000;
+            overflow: hidden;
+        }
+        .choosedList li{
+            border:1px solid chocolate;
+            float: left;
+            padding: 6px;
+            color:chocolate;
+            font-size: 18px;
+            margin: 10px 0;
+            margin-left:22.35px;
+        }
+        .footTotal{
+            width:100%;
+            height:79px;
+            background: yellow;
+        }
+        .footTotal button{
+            width:20%;
+            height:100%;
+            float: right;
+            background: goldenrod;
+            border:0;
+        }
+        .allCost{
+            width:80%;
+            height: 100%;
+            float: left;
+            text-align: center;
+            line-height: 90px;
+        }
+        .hanzi{
+            font-size: 20px;
+            color:grey;
+        }
+        .price{
+            font-size: 20px;
+            color:red;
+        }
+        .detPrice{
+            font-size: 14px;
+            color:grey;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="clock">今天1月6日 13:22</div>
+        <div class="choose_remind">
+            <ul>
+                <li class="choosable fontca"></li>
+                <li class="choosed fontc"></li>
+                <li class="selled fonts"></li>
+            </ul>
+        </div>
+        <div class="set_bar clearfix ">
+            <!--<div class="in_set_bar ">-->
+
+            <!--</div>-->
+        </div>
+        <div class="tofixed">
+            <div class="choosed_set">
+                <span>已选座位</span> <span>最多可选5个座位</span>
+            </div>
+            <ul class="choosedList">
+
+            </ul>
+            <div class="footTotal">
+                <div class="allCost">
+                    <span class="hanzi">合计：</span>
+                    <span class="price"></span>
+                    <span class="detPrice"></span>
+                </div>
+                <button type="button" class="sethave">确认选座</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../jquery-3.3.1(1).js"></script>
+    <script>
+        function pricechange() {
+            $(".price").text("￥"+99*choosearr);
+            $(".detPrice").text("￥99*"+choosearr);
+        }
+        var timer=setInterval(function () {
+           var date=new Date();
+           $(".clock").text("今天"+date.getMonth()+"月"+date.getDay()+"日 "+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds())
+        },1);
+
+        var newul=$("<ul></ul>");
+        var flag=0;
+        for(var i=1;i<=100;i++)
+        {
+            var newli=$("<li></li>");
+
+            if(Math.random()>0.5)
+                newli.addClass("selled");
+            else
+                newli.addClass("choosable");
+
+            if(i%10===0)
+                newli.attr("thex",10);
+            else
+                newli.attr("thex",i%10);
+
+            newli.attr("they",Math.ceil(i/10));
+
+            newul.append(newli);
+
+            if(i%5===0 && flag===0)
+                flag=1;
+            else if(i%5===0 && flag===1)
+                flag=0;
+        }
+        $(".set_bar").append(newul);
+        var choosearr =0;
+        $(".set_bar li").on("click",function () {
+            if($(this).attr("class")==="choosable" && choosearr<5)
+            {
+                $(this).attr("class","choosed");
+                choosearr++;
+                var newli=$("<li></li>");
+                newli.text($(this).attr("they")+"排"+$(this).attr("thex")+"座");
+                $(".choosedList").append(newli);
+            }
+            else if($(this).attr("class")==="choosed")
+            {
+                $(this).attr("class","choosable");
+                choosearr--;
+                $(".choosedList li:contains("+$(this).attr("they")+"排"+$(this).attr("thex")+"座"+")").remove();
+            }
+            pricechange()
+        });
+        pricechange();
+        $(".sethave").on("click",function () {
+            $(".set_bar .choosed").attr("class","selled");
+            choosearr=0;
+            pricechange();
+            $(".choosedList li").remove();
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+     <div id="app">
+        <ul>
+            <li v-for="item in objSorted">
+                {{item.name}}-{{item.age}}
+            </li>
+        </ul>
+     </div>
+<script src="vue.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            obj:[
+                {name:"xiaoming",age:20},
+                {name:"xiaohong",age:18},
+                {name:"xiaoer",age:21},
+            ],
+            num:10,
+        },
+        computed:{
+            objSorted(){
+                let theObj = {};
+                theObj = this.obj.sort(function (a, b){
+                    return a.age - b.age;
+                });
+                return theObj;
+            }
+        }
+    })
+</script>
+</body>
+</html>

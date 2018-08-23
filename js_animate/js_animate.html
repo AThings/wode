@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .animate{
+            width:200px;
+            height:60px;
+            background: red;
+            margin-bottom:20px ;
+        }
+    </style>
+</head>
+<body>
+    <div class="animate" id="div1"></div>
+    <div class="animate"></div>
+    <div class="animate"></div>
+    <script>
+        //var oDiv = document.getElementById("div1");
+        //var timer1,flag;
+        // oDiv.onmouseover = function (ev) {
+        //     flag = 1;
+        //     animation(flag);
+        // };
+        // oDiv.onmouseout = function (ev) {
+        //     flag = -1;
+        //     animation(flag);
+        // };
+
+        var animation = function (index , flag){
+            clearInterval(timer[index]);
+            timer[index] = setInterval(function () {
+                var thisWidth  =  aDiv[index].offsetWidth;
+                if( (thisWidth<=200 && flag===-1) || (thisWidth>=800 && flag===1)){
+                    clearInterval(timer[index]);
+                }
+                else
+                    aDiv[index].style.width = thisWidth+(flag*2)+"px";
+            },8)
+        };
+
+        var aDiv = document.getElementsByClassName("animate");
+        var timer = new Array(aDiv.length);
+        var flag;
+        for(var i=0;i<aDiv.length;i++){
+            aDiv[i].index = i;
+            aDiv[i].onmouseover = function (ev) {
+                flag=1;
+                animation(this.index,flag);
+            };
+            aDiv[i].onmouseout= function () {
+                flag = -1;
+                animation(this.index,flag);
+            }
+        }
+    </script>
+</body>
+</html>

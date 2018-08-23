@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .fangda img{
+
+        }
+        .fangda{
+            width:1000px;
+            height:170px;
+            position: relative;
+        }
+        .choose{
+            width:245px;
+            height:85px;
+            background: blue;
+            position: absolute;
+            top:0;
+            left:0;
+            opacity: 0.2;
+        }
+    </style>
+</head>
+<body>
+<div class="fangda">
+    <img src="01.jpg" alt="">
+    <div class="choose"></div>
+</div>
+<script>
+    var ochoose = document.getElementsByClassName("choose")[0];
+    var oimg = document.getElementsByTagName("img")[0];
+
+    document.onmouseup=function(e){
+        document.onmousemove=null;
+    };
+    ochoose.onmousedown=function(e){
+        e.preventDefault();
+        var theX=e.clientX-this.offsetLeft;
+        var theY=e.clientY-this.offsetTop;
+        document.onmousemove=function (e) {
+            ochoose.style.left=e.clientX-theX+"px";
+            ochoose.style.top=e.clientY-theY+"px";
+        };
+    };
+</script>
+</body>
+</html>

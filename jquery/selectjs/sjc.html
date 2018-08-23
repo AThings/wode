@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .sc1,.sc2{
+            width:111px;
+            height:300px;
+        }
+    </style>
+</head>
+<body>
+    <select multiple="multiple" class="sc1">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+    </select>
+    <select multiple="multiple" class="sc2">
+
+    </select>
+    <br>
+    <button type="button">选中移到右边>></button> <button type="button">选中移到左边<<</button>
+    <br>
+    <button type="button">全部移到右边>></button> <button type="button">全部移到左边<<</button>
+    <script src="../jquery-3.3.1(1).js"></script>
+    <script>
+        $("button:eq(0)").on("click",function(){
+            console.log("0");
+            $(".sc1 option:selected").appendTo(".sc2")
+        });
+        $("button:eq(1)").on("click",function(){
+            console.log("1");
+            $(".sc2 option:selected").appendTo(".sc1")
+        });
+        $("button:eq(2)").on("click",function () {
+            console.log("2");
+            $(".sc1 option").appendTo(".sc2");
+        });
+        $("button:eq(3)").on("click",function () {
+            console.log("3");
+            $(".sc2 option").appendTo(".sc1");
+        });
+    </script>
+</body>
+</html>

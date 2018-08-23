@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        ul{
+            list-style-type: none;
+        }
+        .tag_area{
+            width: 800px;
+            border: 2px solid black;
+            margin: 0 auto;
+        }
+        .top_nav{
+            width:800px;
+            background: black;
+            padding:0 0 2px 0;
+        }
+        .cleafix::after{
+            content: "";
+            display: block;
+            clear:both;
+        }
+        .nav li{
+            color:white;
+            float:left;
+            width:120px;
+            height:46px;
+            text-align: center;
+            line-height: 46px;
+            font-size: 18px;
+        }
+        .un_nav{
+            line-height:30px;
+        }
+        .un_nav ul{
+            padding-left:60px;
+            padding-top:10px;
+            list-style-type: disc;
+            display: none;
+        }
+        .nav .active{
+            background: white;
+            color:black
+        }
+        .un_nav .active{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="tag_area">
+        <div class="top_nav cleafix">
+            <ul class="nav">
+                <li class="active">第一课</li>
+                <li>第二课</li>
+                <li>第三课</li>
+            </ul>
+        </div>
+        <div class="un_nav">
+            <ul class="active">
+                <li class="f">网页样式设计</li>
+                <li class="f">网页样式设计</li>
+                <li class="f">网页样式设计</li>
+                <li class="f">网页样式设计</li>
+                <li class="f">第一页</li>
+            </ul>
+            <ul>
+                <li class="s">爱啥啥</li>
+                <li class="s">随便啦</li>
+                <li class="s">第二页</li>
+            </ul>
+            <ul>
+                <li class="t">就这样</li>
+                <li class="t">第三页</li>
+            </ul>
+        </div>
+    </div>
+    <script src="../jquery-3.3.1(1).js"></script>
+    <script>
+        $(".nav li").on("mouseover",function () {
+            //$(this).addClass("active").siblings().removeClass("active");
+            //$(".un_nav ul").eq($(this).index()).addClass("active").siblings().removeClass("active");
+            //$(".un_nav ul:eq(\"+$(this).index()+\")").addClass("active").siblings().removeClass("active");
+
+            $(this).add($(".un_nav ul").eq($(this).index())).addClass("active").siblings().removeClass("active");
+        })
+    </script>
+</body>
+</html>
